@@ -9,11 +9,11 @@ const fmt = require('util').format;
 
 Dal = {}
 
-Dal.init = (option || {}) => {
-  wrapper.redisOption = option
-  wrapper.db = redis.createClient(option)
-  wrapper.keyPrefix = option.keyPrefix || ''
-} 
+Dal.init = (option) => {
+  wrapper.redisOption = option || {}
+  wrapper.db = redis.createClient(wrapper.redisOption)
+  wrapper.keyPrefix = wrapper.redisOption.keyPrefix || ''
+}
 
 class Redis_Key {
   constructor(opt) {
@@ -164,5 +164,4 @@ Dal.Redis_List = Redis_List;
 Dal.Redis_Hash = Redis_Hash;
 Dal.Redis_Chan = Redis_Chan;
 Dal.Redis_Set = Redis_Set;
-Dal.redisOption = redisOption;
 module.exports = Dal;
