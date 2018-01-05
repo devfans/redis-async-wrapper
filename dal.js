@@ -9,20 +9,21 @@ const fmt = require('util').format;
 
 Dal = {}
 
-Dal.init = (opt) => {
-  wrapper.redisOption = opt
-  wrapper.db = redis.createClient(opt)
+Dal.init = (option || {}) => {
+  wrapper.redisOption = option
+  wrapper.db = redis.createClient(option)
+  wrapper.keyPrefix = option.keyPrefix || ''
 } 
 
 class Redis_Key {
   constructor(opt) {
     this.tpl = opt.tpl;
     this.exp = opt.exp || null
-    if (!wrapper.db) return throw Error("Please init first")
+    if (!wrapper.db) throw Error("Please init first")
   }
 
   composeKeyStr(params) {
-    return fmt.apply(this, [config.name + ':' + this.tpl].concat(params))
+    return fmt.apply(this, [wrapper.keyPrefix + ':' + this.tpl].concat(params))
   }
 
   async getExp(params) {

@@ -1,5 +1,5 @@
 {
-  "name": "redis-async",
+  "name": "redis-async-wrapper",
   "version": "0.0.1",
   "description": "redis data layer async wrapper",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devfans/redis-async.git"
+    "url": "git+https://github.com/devfans/redis-async-wrapper.git"
   },
   "keywords": [
     "redis",
@@ -18,9 +18,9 @@
   "author": "devfans",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/devfans/redis-async/issues"
+    "url": "https://github.com/devfans/redis-async-wrapper/issues"
   },
-  "homepage": "https://github.com/devfans/redis-async#readme",
+  "homepage": "https://github.com/devfans/redis-async-wrapper#readme",
   "dependencies": {
     "bluebird": "^3.5.1",
     "redis": "^2.8.0",
