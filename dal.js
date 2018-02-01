@@ -112,7 +112,6 @@ class Redis_Set extends Redis_Key {
   }
 }
 
-
 class Redis_List extends Redis_Key {
   async lrange(params, l, r) {
     return wrapper.db.lrangeAsync(this.composeKeyStr(params), l, r)
@@ -158,5 +157,28 @@ class Redis_Chan extends Redis_Key {
   }
 }
 
-Object.assign(Dal, { Redis_Key, Redis_String, Redis_List, Redis_Hash, Redis_Chan, Redis_Set })
+class Redis_SSet extends Redis_Key {
+  async zadd(params, score, value) {
+    return db.zaddAsync(this.composeKeyStr(params), score, value)
+  }
+
+  async zrange(params, ...args) {
+    return db.zrangeAsync(this.composeKeyStr(params), ...arg)
+  }
+
+  async zrangebyscore(params, ...args) {
+    return db.zrangebyscoreAsync(this.composeKeyStr(params), ...args)
+  }
+
+  async zrem(params, value) {
+    return db.zremAsync(this.composeKeyStr(params), value)
+  }
+
+  async zremrangebyscore(params, low, high) {
+    return db.zremrangebyscoreAsync(this.composeKeyStr(params), low, high)
+  }
+}
+
+
+Object.assign(Dal, { Redis_Key, Redis_String, Redis_List, Redis_Hash, Redis_Chan, Redis_Set, Redis_SSet })
 module.exports = Dal;
