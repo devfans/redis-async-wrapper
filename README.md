@@ -6,14 +6,27 @@
 
 Redis keys async wrapper
 
-### Get Started
+### Installation
+
 ```
-const model = require('redis-async-wrapper')
+npm install --save redis-async-wrapper
+```
+
+### Get Started
+
+```
+const dal = require('redis-async-wrapper')
+
+// init with options
 model.init({url: "redis://host:port", keyPrefix: "app"})
+
+// define keys conventions
 Templates = {
   user: "user:%s:%s" //  user:userId:type
 }
-User = new model.Redis_Hash({tpl:Templates.user})
+
+// define model
+User = new dal.Redis_Hash({tpl:Templates.user})
 
 User.save = async (id, type,  infoObject) => {
   await User.hmset([id, type], infoObject)
