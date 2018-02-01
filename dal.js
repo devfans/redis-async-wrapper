@@ -62,7 +62,7 @@ class Redis_String extends Redis_Key {
   async incr(params) {
     return wrapper.db.incrAsync(this.composeKeyStr(params))
   }
-  
+
 }
 
 class Redis_Hash extends Redis_Key {
@@ -82,7 +82,7 @@ class Redis_Hash extends Redis_Key {
     }
     return res
   }
-  
+
   async hkeys(params) {
     return wrapper.db.hkeysAsync(this.composeKeyStr(params))
   }
@@ -140,11 +140,11 @@ class Redis_Chan extends Redis_Key {
   onMessage(c, cb) {
     return c.on('message', cb)
   }
-  
+
   onPMessage(c, cb) {
     return c.on('pmessage', cb)
   }
- 
+
   subscribe(c, params) {
     return c.subscribe(this.composeKeyStr(params))
   }
