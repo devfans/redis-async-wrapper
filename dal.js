@@ -158,10 +158,5 @@ class Redis_Chan extends Redis_Key {
   }
 }
 
-Dal.Redis_Key = Redis_Key;
-Dal.Redis_String = Redis_String;
-Dal.Redis_List = Redis_List;
-Dal.Redis_Hash = Redis_Hash;
-Dal.Redis_Chan = Redis_Chan;
-Dal.Redis_Set = Redis_Set;
+Object.assign(Dal, { Redis_Key, Redis_String, Redis_List, Redis_Hash, Redis_Chan, Redis_Set })
 module.exports = Dal;
