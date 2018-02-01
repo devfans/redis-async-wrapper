@@ -18,7 +18,7 @@ npm install --save redis-async-wrapper
 const dal = require('redis-async-wrapper')
 
 // init with options
-model.init({url: "redis://host:port", keyPrefix: "app"})
+dal.init({url: "redis://host:port", keyPrefix: "app"})
 
 // define keys conventions
 Templates = {
