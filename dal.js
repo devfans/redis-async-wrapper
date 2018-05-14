@@ -73,6 +73,10 @@ class Redis_Hash extends Redis_Key {
   async hget(params, field) {
     return wrapper.db.hgetAsync(this.composeKeyStr(params), field)
   }
+  
+  async hsetnx(params, field, value) {
+    return 1 == await wrapper.db.hsetnxAsync(this.composeKeyStr(params), field, value)
+  }
 
   async hmset(params, value, exp=null) {
     let ex = exp || this.exp;
