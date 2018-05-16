@@ -21,12 +21,12 @@ const dal = require('redis-async-wrapper')
 dal.init({url: "redis://host:port", keyPrefix: "app"})
 
 // define keys conventions
-Templates = {
+const Templates = {
   user: "user:%s:%s" //  user:userId:type
 }
 
 // define model
-User = new dal.Redis_Hash({tpl:Templates.user})
+const User = new dal.Redis_Hash({tpl:Templates.user})
 
 User.save = async (id, type,  infoObject) => {
   await User.hmset([id, type], infoObject)
