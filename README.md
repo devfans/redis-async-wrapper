@@ -1,4 +1,7 @@
 # redis-async-wrapper
+
+[![Join the chat at https://gitter.im/devfans/redis-async-wrapper](https://badges.gitter.im/devfans/redis-async-wrapper.svg)](https://gitter.im/devfans/redis-async-wrapper?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Build Status][travis-image]][travis-url]
