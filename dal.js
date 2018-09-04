@@ -26,15 +26,16 @@ class Redis_Key {
     return fmt.apply(this, [wrapper.keyPrefix + ':' + this.tpl].concat(params))
   }
 
-  async getExp(params) {
+  async ttl(params) {
     return wrapper.db.ttlAsync(this.composeKeyStr(params));
   }
 
-  async expireKey(params, delta) {
+  expire(params, delta) {
+    if (typeof delta === undefined) delta = this.exp || 0
     return wrapper.db.expireAsync(this.composeKeyStr(params), delta)
   }
 
-  async deleteKey(params) {
+  async delete(params) {
     return wrapper.db.deleteAsync(this.composeKeyStr(params))
   }
 
