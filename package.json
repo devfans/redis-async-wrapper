@@ -1,6 +1,6 @@
 {
   "name": "redis-async-wrapper",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "redis data layer async wrapper",
   "main": "index.js",
   "scripts": {
