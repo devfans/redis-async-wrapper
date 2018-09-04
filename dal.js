@@ -36,7 +36,7 @@ class Redis_Key {
   }
 
   delete(params) {
-    return wrapper.db.deleteAsync(this.composeKeyStr(params))
+    return wrapper.db.delAsync(this.composeKeyStr(params))
   }
 
   async exists(params) {
