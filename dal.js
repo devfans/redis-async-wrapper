@@ -168,7 +168,7 @@ class Redis_SSet extends Redis_Key {
   }
 
   zrange(params, ...args) {
-    return wrapper.db.zrangeAsync(this.composeKeyStr(params), ...arg)
+    return wrapper.db.zrangeAsync(this.composeKeyStr(params), ...args)
   }
 
   zrangebyscore(params, ...args) {
