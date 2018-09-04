@@ -14,6 +14,9 @@ Redis keys async wrapper
 npm install --save redis-async-wrapper
 ```
 
+## NOTE
+Only a part of redis commands added in this wrapper till now.
+
 ### Get Started
 
 ```
