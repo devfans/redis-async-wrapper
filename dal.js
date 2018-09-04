@@ -164,23 +164,23 @@ class Redis_Chan extends Redis_Key {
 
 class Redis_SSet extends Redis_Key {
   zadd(params, score, value) {
-    return db.zaddAsync(this.composeKeyStr(params), score, value)
+    return wrapper.db.zaddAsync(this.composeKeyStr(params), score, value)
   }
 
   zrange(params, ...args) {
-    return db.zrangeAsync(this.composeKeyStr(params), ...arg)
+    return wrapper.db.zrangeAsync(this.composeKeyStr(params), ...arg)
   }
 
   zrangebyscore(params, ...args) {
-    return db.zrangebyscoreAsync(this.composeKeyStr(params), ...args)
+    return wrapper.db.zrangebyscoreAsync(this.composeKeyStr(params), ...args)
   }
 
   zrem(params, value) {
-    return db.zremAsync(this.composeKeyStr(params), value)
+    return wrapper.db.zremAsync(this.composeKeyStr(params), value)
   }
 
   zremrangebyscore(params, low, high) {
-    return db.zremrangebyscoreAsync(this.composeKeyStr(params), low, high)
+    return wrapper.db.zremrangebyscoreAsync(this.composeKeyStr(params), low, high)
   }
 }
 
