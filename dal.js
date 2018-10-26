@@ -68,8 +68,8 @@ class Redis_String extends Redis_Key {
   }
 
   async setnx(params, value) {
-    return 1 == await wrapper.db.setnxAsync(this.composeKeyStr(params))
-  } 
+    return 1 == await wrapper.db.setnxAsync(this.composeKeyStr(params), value)
+  }
 
 }
 
