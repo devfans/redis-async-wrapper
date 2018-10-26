@@ -40,8 +40,7 @@ class Redis_Key {
   }
 
   async exists(params) {
-    let exist = await wrapper.db.existsAsync(this.composeKeyStr(params));
-    return exist == 1;
+    return 1 == await wrapper.db.existsAsync(this.composeKeyStr(params));
   }
 
 }
@@ -63,6 +62,14 @@ class Redis_String extends Redis_Key {
   incr(params) {
     return wrapper.db.incrAsync(this.composeKeyStr(params))
   }
+
+  decr(params) {
+    return wrapper.db.decrAsync(this.composeKeyStr(params))
+  }
+
+  async setnx(params, value) {
+    return 1 == await wrapper.db.setnxAsync(this.composeKeyStr(params))
+  } 
 
 }
 
