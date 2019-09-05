@@ -43,6 +43,10 @@ class Redis_Key {
     return 1 == await wrapper.db.existsAsync(this.composeKeyStr(params));
   }
 
+  async call (method, params, ...args) {
+    const caller = wrapper.db[method + 'Async']
+    if (caller) return caller(this.composeKeyStr(params), ...args)
+  }
 }
 
 class Redis_String extends Redis_Key {
@@ -82,6 +86,10 @@ class Redis_Hash extends Redis_Key {
     return wrapper.db.hgetAsync(this.composeKeyStr(params), field)
   }
 
+  hlen(params) {
+    return wrapper.db.hlenAsync(this.composeKeyStr(params))
+  }
+
   async hsetnx(params, field, value) {
     return 1 == await wrapper.db.hsetnxAsync(this.composeKeyStr(params), field, value)
   }
@@ -106,7 +114,6 @@ class Redis_Hash extends Redis_Key {
   hgetall(params) {
     return wrapper.db.hgetallAsync(this.composeKeyStr(params));
   }
-
 }
 
 class Redis_Set extends Redis_Key {
@@ -119,8 +126,8 @@ class Redis_Set extends Redis_Key {
     return ismemeber == 1
   }
 
-  smembers(params, value) {
-    return wrapper.db.smembersAsync(this.composeKeyStr(params), value)
+  smembers(params) {
+    return wrapper.db.smembersAsync(this.composeKeyStr(params))
   }
 }
 
@@ -178,8 +185,16 @@ class Redis_SSet extends Redis_Key {
     return wrapper.db.zrangeAsync(this.composeKeyStr(params), ...args)
   }
 
+  zrevrange(params, ...args) {
+    return wrapper.db.zrevrangeAsync(this.composeKeyStr(params), ...args)
+  }
+
   zrangebyscore(params, ...args) {
     return wrapper.db.zrangebyscoreAsync(this.composeKeyStr(params), ...args)
+  }
+
+  zrevrangebyscore(params, ...args) {
+    return wrapper.db.zrevrangebyscoreAsync(this.composeKeyStr(params), ...args)
   }
 
   zrem(params, value) {
